@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#10182b"><title>La Última Edición</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <main id="landing" class="landing">
+    <section class="masthead"><span class="eyebrow">INVESTIGACIÓN COLABORATIVA · 60 MINUTOS</span><h1>La Última<br><i>Edición</i></h1><p>El sistema se bloqueará a medianoche. Encuentren la verdad que quedó fuera de la noticia.</p></section>
+    <section class="join-card"><div class="red-dot"></div><h2>Acceso de prensa</h2><label>Tu nombre<input id="player-name" maxlength="22" placeholder="Ej. Valeria" autocomplete="name"></label>
+      <button id="create-room" class="primary">Crear sala de investigación <span>→</span></button>
+      <div class="divider"><span>o únete a una sala</span></div><label>Código de 4 caracteres<input id="join-code" maxlength="4" placeholder="A7K2" class="code-input"></label>
+      <button id="join-room" class="secondary">Entrar a la redacción</button><p id="landing-error" class="error"></p>
+    </section>
+  </main>
+  <div id="lobby" hidden class="lobby">
+    <header class="topbar"><div class="brand">LA ÚLTIMA <em>EDICIÓN</em></div><div class="timer muted">⏱ <span>60:00</span></div></header>
+    <main class="lobby-main"><span class="eyebrow">SALA DE ESPERA</span><h1>Reúne a tu<br>equipo.</h1><div class="room-code"><small>CÓDIGO DE ACCESO</small><strong id="room-code">----</strong><button id="copy-code" title="Copiar código">⧉</button></div><p class="invite">Comparte este código. Pueden conectarse más de 30 dispositivos.</p>
+      <div class="players-box"><span>PERIODISTAS CONECTADOS <b id="player-count">1</b></span><div id="player-list" class="player-list"></div></div><button id="start-game" class="primary start">Iniciar investigación <span>→</span></button><p id="host-note" class="muted">Solo quien creó la sala puede iniciar.</p>
+    </main>
+  </div>
+  <div id="game" hidden>
+    <header class="topbar gamebar"><div class="brand">LA ÚLTIMA <em>EDICIÓN</em></div><div class="case-title">CASO: <span>OPERACIÓN CLIC</span></div><div class="timer">⏱ <span id="timer">60:00</span></div></header>
+    <div class="game-layout"><aside><div class="progress-label">EXPEDIENTE <span id="progress">0 / 6</span></div><nav id="room-nav"></nav><div class="evidence"><small>EVIDENCIA RECUPERADA</small><div id="evidence-list"></div></div><div class="editor-message"><b>EL EDITOR</b><p id="editor-text">“Tenemos una hora. No desperdicien ni un clic.”</p></div></aside>
+      <main id="scene" class="scene"></main>
+    </div>
+  </div>
+  <div id="toast" role="status"></div>
+  <script src="/socket.io/socket.io.js"></script><script src="app.js"></script>
+</body></html>
