@@ -10,7 +10,7 @@
 <body>
   <div class="noise"></div>
   <main id="landing" class="landing">
-    <section class="masthead"><span class="eyebrow">INVESTIGACIÓN COLABORATIVA</span><h1>La Última<br><i>Edición</i></h1><p>Encuentren la verdad que quedó fuera de la noticia.</p></section>
+    <section class="masthead"><span class="eyebrow">INVESTIGACIÓN COLABORATIVA · 60 MINUTOS</span><h1>La Última<br><i>Edición</i></h1><p>El sistema se bloqueará a medianoche. Encuentren la verdad que quedó fuera de la noticia.</p></section>
     <section class="join-card"><div class="red-dot"></div><h2>Antes de entrar</h2><p class="entry-copy">Elige quién investigará en la redacción. El personaje solo representa tu presencia dentro del equipo.</p><div class="avatars" id="avatars"><button type="button" class="avatar active" data-avatar="Nora"><span class="figure figure-nora"><i></i><b></b><em></em></span><strong>Nora</strong><small>rastreos y fuentes</small></button><button type="button" class="avatar" data-avatar="Ivo"><span class="figure figure-ivo"><i></i><b></b><em></em></span><strong>Ivo</strong><small>datos y secuencias</small></button><button type="button" class="avatar" data-avatar="Lía"><span class="figure figure-lia"><i></i><b></b><em></em></span><strong>Lía</strong><small>imagen y contexto</small></button></div><label>Tu nombre<input id="player-name" maxlength="22" placeholder="Escribe tu nombre" autocomplete="name"></label>
       <button id="create-room" class="primary">Crear sala de investigación <span>→</span></button>
       <div class="divider"><span>o únete a una sala</span></div><label>Código de 4 caracteres<input id="join-code" maxlength="4" placeholder="A7K2" class="code-input"></label>
@@ -18,15 +18,15 @@
     </section>
   </main>
   <div id="lobby" hidden class="lobby">
-    <header class="topbar"><div class="brand">LA ÚLTIMA <em>EDICIÓN</em></div></header>
+    <header class="topbar"><div class="brand">LA ÚLTIMA <em>EDICIÓN</em></div><div class="timer muted">⏱ <span>10:00</span></div></header>
     <main class="lobby-main"><span class="eyebrow">SALA DE ESPERA · REDACCIÓN EN VIVO</span><h1>Reúne a tu<br>equipo.</h1><div class="room-code"><small>CÓDIGO DE ACCESO</small><strong id="room-code">----</strong><button id="copy-code" title="Copiar código">⧉</button></div><p class="invite">Comparte este código. Pueden conectarse más de 30 dispositivos.</p>
       <div class="lobby-news"><span class="pulse"></span><b>TRANSMISIÓN INTERNA</b><p>El sistema se abrirá cuando el editor dé la orden. Mientras llegan los demás, revisen la misión del equipo.</p><div class="mission-mini"><span>🔎 Investigar</span><span>🧩 Resolver</span><span>📰 Publicar con verdad</span></div></div>
       <div class="players-box"><span>PERIODISTAS CONECTADOS <b id="player-count">1</b></span><div id="player-list" class="player-list"></div></div><button id="start-game" class="primary start">Abrir la investigación <span>→</span></button><p id="host-note" class="muted">Esperando a que el anfitrión abra la investigación.</p>
     </main>
   </div>
   <div id="game" hidden>
-    <header class="topbar gamebar"><div class="brand">LA ÚLTIMA <em>EDICIÓN</em></div><div class="case-title">CASO: <span>OPERACIÓN CLIC</span></div></header>
-    <div class="game-layout"><aside><div class="progress-label">EXPEDIENTE <span id="progress">0 / 7</span></div><nav id="room-nav"></nav><div class="evidence"><small>EVIDENCIA RECUPERADA</small><div id="evidence-list"></div></div><div class="editor-message"><b>EL EDITOR</b><p id="editor-text">“No desperdicien ni un clic.”</p></div></aside>
+    <header class="topbar gamebar"><div class="brand">LA ÚLTIMA <em>EDICIÓN</em></div><div class="case-title">MISIÓN: <span>RESCATE DE LA REDACCIÓN</span></div><div id="lives" class="lives" aria-label="Vidas restantes">● ● ●</div><div class="timer">⏱ <span id="timer">30:00</span></div></header>
+    <div class="game-layout"><aside><div class="progress-label">EXPEDIENTE <span id="progress">0 / 6</span></div><nav id="room-nav"></nav><div class="evidence"><small>EVIDENCIA RECUPERADA</small><div id="evidence-list"></div></div><div class="editor-message"><b>EL EDITOR</b><p id="editor-text">“Tenemos una hora. No desperdicien ni un clic.”</p></div></aside>
       <main id="scene" class="scene"></main>
     </div>
   </div>
