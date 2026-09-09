@@ -1,6 +1,6 @@
 const socket = io();
 let state = null, current = 'headline', selectedOrder = [], archiveOrder = [], cipherShift = 0, headlineMarks = new Set(), photoClues = new Set(), socialChecks = new Set();
-let avatar = '🔎';
+let avatar = 'Nora';
 const $ = (s) => document.querySelector(s);
 const rooms = [
   ['headline', '01', 'El titular'], ['photo', '02', 'La fotografía'], ['social', '03', 'La red social'], ['archive', '04', 'Archivo roto'], ['decoder', '05', 'Mesa de cifrado'],
@@ -12,7 +12,7 @@ const messages = [
 ];
 
 function toast(text) { const el = $('#toast'); el.textContent = text; el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 3500); }
-function name() { return `${avatar} ${$('#player-name').value.trim() || 'Periodista'}`; }
+function name() { return `${$('#player-name').value.trim() || 'Periodista'} · ${avatar}`; }
 document.querySelectorAll('.avatar').forEach(btn => btn.onclick = () => { avatar = btn.dataset.avatar; document.querySelectorAll('.avatar').forEach(x => x.classList.toggle('active', x === btn)); });
 function enterRoom(next) { state = next; $('#landing').hidden = true; $('#lobby').hidden = false; drawLobby(); }
 
