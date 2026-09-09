@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#10182b"><title>La Última Edición</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="dark.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <main id="landing" class="landing">
+    <section class="masthead"><span class="eyebrow">INVESTIGACIÓN COLABORATIVA</span><h1>La Última<br><i>Edición</i></h1><p>Encuentren la verdad que quedó fuera de la noticia.</p></section>
+    <section class="join-card"><div class="red-dot"></div><h2>Antes de entrar</h2><p class="entry-copy">Elige quién investigará en la redacción. El personaje solo representa tu presencia dentro del equipo.</p><div class="avatars" id="avatars"><button type="button" class="avatar active" data-avatar="Nora"><span class="figure figure-nora"><i></i><b></b><em></em></span><strong>Nora</strong><small>rastreos y fuentes</small></button><button type="button" class="avatar" data-avatar="Ivo"><span class="figure figure-ivo"><i></i><b></b><em></em></span><strong>Ivo</strong><small>datos y secuencias</small></button><button type="button" class="avatar" data-avatar="Lía"><span class="figure figure-lia"><i></i><b></b><em></em></span><strong>Lía</strong><small>imagen y contexto</small></button></div><label>Tu nombre<input id="player-name" maxlength="22" placeholder="Escribe tu nombre" autocomplete="name"></label>
+      <button id="create-room" class="primary">Crear sala de investigación <span>→</span></button>
+      <div class="divider"><span>o únete a una sala</span></div><label>Código de 4 caracteres<input id="join-code" maxlength="4" placeholder="A7K2" class="code-input"></label>
+      <button id="join-room" class="secondary">Entrar a la redacción</button><p id="landing-error" class="error"></p>
+    </section>
+  </main>
+  <div id="lobby" hidden class="lobby">
+    <header class="topbar"><div class="brand">LA ÚLTIMA <em>EDICIÓN</em></div></header>
+    <main class="lobby-main"><span class="eyebrow">SALA DE ESPERA · REDACCIÓN EN VIVO</span><h1>Reúne a tu<br>equipo.</h1><div class="room-code"><small>CÓDIGO DE ACCESO</small><strong id="room-code">----</strong><button id="copy-code" title="Copiar código">⧉</button></div><p class="invite">Comparte este código. Pueden conectarse más de 30 dispositivos.</p>
+      <div class="lobby-news"><span class="pulse"></span><b>TRANSMISIÓN INTERNA</b><p>El sistema se abrirá cuando el editor dé la orden. Mientras llegan los demás, revisen la misión del equipo.</p><div class="mission-mini"><span>🔎 Investigar</span><span>🧩 Resolver</span><span>📰 Publicar con verdad</span></div></div>
+      <div class="players-box"><span>PERIODISTAS CONECTADOS <b id="player-count">1</b></span><div id="player-list" class="player-list"></div></div><button id="start-game" class="primary start">Abrir la investigación <span>→</span></button><p id="host-note" class="muted">Esperando a que el anfitrión abra la investigación.</p>
+    </main>
+  </div>
+  <div id="game" hidden>
+    <header class="topbar gamebar"><div class="brand">LA ÚLTIMA <em>EDICIÓN</em></div><div class="case-title">CASO: <span>OPERACIÓN CLIC</span></div></header>
+    <div class="game-layout"><aside><div class="progress-label">EXPEDIENTE <span id="progress">0 / 7</span></div><nav id="room-nav"></nav><div class="evidence"><small>EVIDENCIA RECUPERADA</small><div id="evidence-list"></div></div><div class="editor-message"><b>EL EDITOR</b><p id="editor-text">“No desperdicien ni un clic.”</p></div></aside>
+      <main id="scene" class="scene"></main>
+    </div>
+  </div>
+  <div id="toast" role="status"></div>
+  <script src="/socket.io/socket.io.js"></script><script src="app.js"></script>
+</body></html>
