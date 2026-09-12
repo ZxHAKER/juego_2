@@ -55,12 +55,34 @@ io.on('connection', (socket) => {
   socket.on('game:solve', ({ code, puzzle, answer }, done) => {
     const room = rooms.get(code);
     if (!room || !room.started || room.finalWon) return;
-    const expected = { headline: 'CONFIRMAN', photo: '2417', social: 'FUENTE', puzzle: 'TITULAR,HECHO,FUENTE,CONTEXTO,EXPLICACION', detective: 'MEDIO B' };
+    const expected = {
+      photo: '2417',
+      social: 'FUENTE',
+      archive: '3,4,1,2',
+      decoder: 'VERIFICA',
+      puzzle: 'TITULAR,HECHO,FUENTE,CONTEXTO,EXPLICACION',
+      detective: 'MEDIO B',
+      relay: 'NORA',
+      route: 'RUTA C',
+      vault: 'LIA',
+      witness: 'IVO'
+    };
     const value = String(answer || '').trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     if (expected[puzzle] !== value) return done?.({ ok: false, message: 'Aún no. Vuelve a mirar las pruebas.' });
     if (!room.solved.includes(puzzle)) {
       room.solved.push(puzzle);
-      const labels = { headline: 'Sensacionalismo', photo: 'Contexto', social: 'Fuente verificable', puzzle: 'Omisión', detective: 'Cronología' };
+      const labels = {
+        photo: 'Contexto',
+        social: 'Fuente verificable',
+        archive: 'Desfase horario',
+        decoder: 'Clave de verificación',
+        puzzle: 'Omisión',
+        detective: 'Cronología',
+        relay: 'Firma de radio',
+        route: 'Ruta segura',
+        vault: 'Integridad del archivo',
+        witness: 'Testimonio consistente'
+      };
       room.evidence.push(labels[puzzle]); broadcast(room);
     }
     done?.({ ok: true, message: 'Archivo recuperado.' });
@@ -76,7 +98,7 @@ io.on('connection', (socket) => {
 
   socket.on('game:final', ({ code, choice }, done) => {
     const room = rooms.get(code);
-    if (!room || room.solved.length < 5 || !room.classifications.done) return done?.({ ok: false, message: 'Todavía faltan archivos por recuperar.' });
+    if (!room || room.solved.length < 10 || !room.classifications.done) return done?.({ ok: false, message: 'Todavía faltan archivos por recuperar.' });
     if (choice !== 'B') return done?.({ ok: false, message: 'Ese titular añade algo que el informe no demuestra.' });
     room.finalWon = true; broadcast(room); done?.({ ok: true });
   });
